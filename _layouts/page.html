@@ -7,6 +7,8 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
   </header>
   <div class="post-content">
+    <p>site date : {{ site.time }}</p>
+    <p>site date formatted : {{ site.time | date_to_rfc822 }}</p>
     <p>date : {{ page.date }}</p>
     <p>formatted : {{ page.date | date_to_rfc822 }}</p>
   </div>
