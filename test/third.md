@@ -1,5 +1,5 @@
 ---
 title: third
-date: 2016-03-09
+date: 2016-03-09 00:00:00
 dateTest: true
 ---

@@ -40,7 +40,7 @@ mixed:
 {% assign sorted=site.pages | where: 'dateTest', true | sort: 'date' %}
 
 {% for p in sorted %}
-  <p>{{ p.title }} : {{ p.date }}</p>
+  <p>{{ p.title }} : {{ p.date }} / {{ p.date | date: date_to_rfc822 }}</p>
 {% endfor %}
 
 <h2>Date or string ?</h2>
