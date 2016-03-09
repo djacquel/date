@@ -1,0 +1,81 @@
+---
+layout: default
+
+dates:
+  - "2015-12-21" # string
+  - 2015-12-21   # date
+  - 2015-12-1    # string
+  - 2015-12-01   # date
+  - 2015-12-21 12:21:22  # time
+  - 2015-12-21 12:21:22 +0100 # time
+
+datesAsStrings:
+  - "2015-12-1"
+  - "2015-12-3"
+  - "2015-12-12"
+
+datesAsDates:
+  - 2015-12-03
+  - 2015-12-21
+  - 2015-12-01
+
+datesAsDatesOrTime:
+  - 2015-12-01
+  - 2015-12-03 12:12:12 +0100
+  - 2015-12-21
+
+mixed:
+  - 2015-12-1
+  - 2015-12-03
+  - 2015-12-21
+
+---
+
+<div class="home">
+
+<h1 class="page-heading">Dates</h1>
+
+<h2>Sorting pages</h2>
+
+{% assign sorted=site.pages | where: 'dateTest', true | sort: 'date' %}
+
+{% for p in sorted %}
+  <p>{{ p.title }} : {{ p.date }}</p>
+{% endfor %}
+
+<h2>Date or string ?</h2>
+{% for date in page.dates %}
+  <p>Page {{date}} : {{ date | debug }}</p>
+{% endfor %}
+
+<h2>String sort</h2>
+{% assign sortedDates = page.datesAsStrings | sort %}
+{% for date in sortedDates %}
+  <p>{{ date }}</p>
+{% endfor %}
+
+<h2>Date sort</h2>
+{% assign sortedDates = page.datesAsDates | sort %}
+{% for date in sortedDates %}
+  <p>{{ date }}</p>
+{% endfor %}
+</div>
+
+{% comment %}
+<h2>Date Time sort</h2>
+{% assign sortedDates = page.datesAsDatesOrTime | sort %}
+{% for date in sortedDates %}
+  <p>{{ date }}</p>
+{% endfor %}
+Error: Liquid error: comparison of Date with Time failed
+{% endcomment %}
+
+{% comment %}
+<h2>Mixed sort</h2>
+{% assign sortedDates = page.mixed | sort %}
+{% for date in sortedDates %}
+  <p>{{ date }}</p>
+{% endfor %}
+Error: Liquid error: comparison of String with Date failed{% endcomment %}
+
+</div>
