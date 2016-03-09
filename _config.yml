@@ -23,5 +23,5 @@ markdown: kramdown
 defaults:
   - { scope: { type: "pages" }, values: { layout: "page" } }
 
-#timezone: Europe/Paris
+timezone: Europe/Paris
 
