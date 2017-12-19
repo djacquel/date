@@ -32,6 +32,18 @@ mixed:
 ---
 
 <div class="home">
+  <h1>Posts </h1>
+  <h3>site.time : ({{ site.time }}) - site.timezone : ({{ site.timezone }}) - site.future ({{ site.future }})</h3>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <h2>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        </h2>
+        <span class="post-meta">{{ post.date | inspect }} {{ post.date | debug }}</span>
+      </li>
+    {% endfor %}
+  </ul>
 
 <h1 class="page-heading">Dates</h1>
 
@@ -45,7 +57,8 @@ mixed:
 
 <h2>Date or string ?</h2>
 {% for date in page.dates %}
-  <p>Page {{date}} : {{ date | debug }}</p>
+  <p>{{date}} : {{ date | inspect }} {{ date | debug }}</p>
+  <hr>
 {% endfor %}
 
 <h2>String sort</h2>
